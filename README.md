@@ -8,20 +8,20 @@ An intelligent, production-oriented fraud detection system built on the classic 
 
 ##  Final Results (After Fixes)
 
-| Metric              | Value      | 
-|---------------------|------------|
-| Total Transactions  | 56,962     |
-| Total Fraud Cases   | 75         |
-| **Fraud Detected**  | **64**     |
-| **Fraud Missed**    | **11**     |
-| **Fraud Detection Rate** | **85.33%** |
-| Baseline Cost       | 37,500    |
-| System Cost         | 5,980     |
-| **Net Savings**     | **31,520** |
+ Metric               Value       
+
+ Total Transactions   56,962     
+ Total Fraud Cases    75         
+ **Fraud Detected**   **64**     
+ **Fraud Missed**     **11**     
+ **Fraud Detection Rate**  **85.33%** 
+ Baseline Cost        37,500    
+ System Cost          5,980     
+ **Net Savings**      **31,520** 
 
 **Huge improvement after adding V1–V28 features and fixing leakage!**
 
----
+
 
 ##  Project Highlights
 
@@ -33,7 +33,7 @@ An intelligent, production-oriented fraud detection system built on the classic 
 - Top-N risk-based strategy
 - Comprehensive evaluation using fraud-specific metrics
 
----
+
 
 ##  Tech Stack
 
@@ -43,7 +43,7 @@ An intelligent, production-oriented fraud detection system built on the classic 
 - **Visualization**: Plotly, Matplotlib
 - **Pipeline**: Scikit-learn `Pipeline`
 
----
+
 
 ##  Project Structure
 
@@ -61,51 +61,50 @@ credit-card-fraud-detection/
 ├── README.md
 └── requirements.txt
 
----
 
-## **Key Concepts & Methods Used**
-## 1. Problem Understanding
+
+Key Concepts & Methods Used
+1. Problem Understanding
 Credit card fraud is a highly imbalanced classification problem (≈0.17% fraud rate). Traditional accuracy is useless. I focus on:
 
 High Recall for fraud (minimize financial loss)
 Controlled False Positive Rate (minimize customer friction)
 
-## 2. Data Splitting Strategy
+2. Data Splitting Strategy
 split_index = int(len(df) * 0.8)
 train_df = df.iloc[:split_index].copy()
 test_df = df.iloc[split_index:].copy()
 
-## 3. Feature Engineering (Core Strength)
+3. Feature Engineering (Core Strength)
 I followed three strict principles:
 
 Features must represent abnormal behavior, not raw values
 Must be real-time computable
 Must be leakage-free
 
-| Engineered Features | Purpose                   |
-|---------------------|---------------------------|             
-| log_amount          |Handle right-skewed amounts|   
-| amount_risk_band    |Micro / Low / Medium / High risk|
-| hour                |Transaction timing|
-| night_txn           |Flag for low-monitoring hours (0-6)|
-| amount_deviation    |Z-score from training mean|
-| rolling_fraud_rate  |Recent fraud density|
-| rolling_fraud_rate  |Anonymized behavioral patterns|
----
-## 4. Models Used
+ Engineered Features  Purpose                             
+ log_amount          Handle right-skewed amounts   
+ amount_risk_band    Micro / Low / Medium / High risk
+ hour                Transaction timing
+ night_txn           Flag for low-monitoring hours (0-6)
+ amount_deviation    Z-score from training mean
+ rolling_fraud_rate  Recent fraud density
+ rolling_fraud_rate  Anonymized behavioral patterns
+
+4. Models Used
 
 Baseline: Logistic Regression + Probability Calibration (Sigmoid)
 Main Model: Random Forest Classifier (300 trees, balanced_subsample)
 Both wrapped in StandardScaler + Pipeline.
 
-## 5. Fraud Detection Evaluation Metrics Explained
+5. Fraud Detection Evaluation Metrics Explained
 Standard Metrics
 ROC-AUC: Measures ranking ability (0.5 = random, 1.0 = perfect). Good for overall discrimination.
 PR-AUC (Average Precision): Much more informative than ROC-AUC in highly imbalanced datasets like fraud.
----
-## **Business-Oriented Metrics**
 
-### Confusion Matrix components:
+ Business-Oriented Metrics
+
+ Confusion Matrix components:
 TP: Correctly caught fraud
 FN (False Negative): Missed fraud → Direct financial loss (₹500 each)
 FP (False Positive): Legitimate transaction blocked → Customer friction (₹10 each)
@@ -117,8 +116,8 @@ FP_COST = 10       # False block cost
 REVIEW_COST = 2    # Manual review cost
 Detection Rate (Recall for fraud class): % of actual frauds caught
 Net Savings: Baseline_Cost - System_Cost
----
-## 6. Decision Engine (Multi-Stage System)
+
+ 6. Decision Engine (Multi-Stage System)
 Instead of simple binary classification, I implemented a risk-based decision framework:
 
 def assign_decision(prob):
@@ -129,7 +128,7 @@ def assign_decision(prob):
     else:
         return "Approve"
 
----
-## Author
+
+ Author
 PantherPink
 Data Scientist specializing in Fraud Analytics & Risk Modeling
