@@ -4,26 +4,26 @@
 
 An intelligent, production-oriented fraud detection system built on the classic **[Credit Card Fraud Dataset](https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud)**. This project demonstrates how to go beyond simple classification by incorporating domain knowledge, leakage-safe engineering, and real business cost optimization.
 
+![Fraud Detection Dashboard](newplot%20(3).png)
 
+## 📊 Final Results (After Fixes)
 
-##  Final Results (After Fixes)
-
- Metric               Value       
-
- Total Transactions   56,962     
- Total Fraud Cases    75         
- **Fraud Detected**   **64**     
- **Fraud Missed**     **11**     
- **Fraud Detection Rate**  **85.33%** 
- Baseline Cost        37,500    
- System Cost          5,980     
- **Net Savings**      **31,520** 
+| Metric              | Value      | 
+|---------------------|------------|
+| Total Transactions  | 56,962     |
+| Total Fraud Cases   | 75         |
+| **Fraud Detected**  | **64**     |
+| **Fraud Missed**    | **11**     |
+| **Fraud Detection Rate** | **85.33%** |
+| Baseline Cost       | ₹37,500    |
+| System Cost         | ₹5,980     |
+| **Net Savings**     | **₹31,520** |
 
 **Huge improvement after adding V1–V28 features and fixing leakage!**
 
+---
 
-
-##  Project Highlights
+## ✨ Project Highlights
 
 - Time-based chronological split (realistic for fraud)
 - Rich feature engineering focused on abnormal behavior
@@ -33,9 +33,9 @@ An intelligent, production-oriented fraud detection system built on the classic 
 - Top-N risk-based strategy
 - Comprehensive evaluation using fraud-specific metrics
 
+---
 
-
-##  Tech Stack
+## 🛠 Tech Stack
 
 - **Language**: Python 3.9+
 - **Data Manipulation**: Pandas, NumPy
@@ -43,9 +43,9 @@ An intelligent, production-oriented fraud detection system built on the classic 
 - **Visualization**: Plotly, Matplotlib
 - **Pipeline**: Scikit-learn `Pipeline`
 
+---
 
-
-##  Project Structure
+## 📁 Project Structure
 
 ```bash
 credit-card-fraud-detection/
